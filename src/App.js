@@ -1,26 +1,28 @@
-import { Component } from "react";
-import Table from './Table';
-class App extends Component {
-    render(){
-        const characters=[{
-            name: 'Mani',
-            job: 'RmsMani',
-        },
-        {
-            name: 'RmsMani',
-        job: 'RmsManiCentral',
-    },
-    {
-        name: 'SurendharMani',
-    job: 'RmsManiPostOffice',
-},
-    ]
-        return(
-            <div className="container">
-                <h1> Table</h1>
-                <Table charactersData={characters}/>
-            </div>
-        )
-    }
+import React from 'react';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import About from "./pages/About";
+import AddEdit from "./pages/AddEdit";
+import Home from "./pages/Home";
+import View from "./pages/View";
+
+function App() {
+  return (
+    <BrowserRouter>
+    <div className="App">
+    <ToastContainer />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/add" component={AddEdit} />
+      <Route path="/update/:id" component={AddEdit} />
+      <Route path="/view/:id" component={View} />
+      <Route path="/about" component={About} />
+    </Switch>
+    </div>
+    </BrowserRouter>
+  );
 }
+
 export default App;
